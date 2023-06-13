@@ -1,0 +1,8 @@
+FROM python:3
+WORKDIR /Bank 
+COPY ./Bank ./Bank
+COPY ./networking ./Bank/networking
+RUN apt-get update && apt-get install -y iputils-ping
+ENTRYPOINT [ "python", "-u", "Bank/Client.py" ]
+
+

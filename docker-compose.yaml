@@ -1,0 +1,107 @@
+# MAINTAINER Robiel Elias Redie
+
+version: "3.8"
+services:
+  bank:
+   
+    build: 
+      context: /home/robi/uni/RobiVS
+      dockerfile: Dockerfile.Server
+    container_name: bank
+    ports:
+      - "6789:6789"
+      #- "7001:7001"
+    networks:
+      - test_net_1
+    
+    depends_on:
+      - bank2
+      - kafka
+
+    environment:
+      - SERVER_IP=bank
+      - SERVER_PORT= 6789
+      - SERVER_IP_THRIFT=bank
+     # - SERVER_PORT_THRIFT=7001
+      - SERVER_IP_BANK= bank2
+      - SERVER_PORT_BANK=7001
+      - LOAN_AMOUNT= 1000 # amount money to lend from another bank 
+      - KAFKA_IP= kafka
+  
+
+  bank2:
+   
+    build: 
+      context: /home/robi/uni/RobiVS
+      dockerfile: Dockerfile.Server
+    container_name: bank2
+    ports:
+      - "6790:6789"
+      - "7002:7001"
+    networks:
+      - test_net_1
+    environment:
+      - SERVER_IP=bank2
+      - SERVER_PORT= 6789
+     # - SERVER_IP_THRIFT=bank2
+     # - SERVER_PORT_THRIFT=6790
+    depends_on:
+      - kafka
+  
+
+      
+
+
+  stockmarket:
+    depends_on:
+      - bank
+    build: 
+      context: /home/robi/uni/RobiVS
+      dockerfile: Dockerfile.client
+     # container_name: udpclient   #commented out beacuse docker needs to generate a unique name for each container by itself 
+    ports:
+      - "6790-7000:6790"    # generating ports from the 0-5 and assigning them to each of the replica containers 
+    networks:
+      - test_net_1
+    environment:
+      - SERVER_HOSTNAME=bank
+      - SERVER_PORT=6789
+    #deploy: 
+     # replicas: 10
+
+  zookeeper:
+      image: wurstmeister/zookeeper
+      #container_name: robi_zookeeper
+      ports:
+        - "2181:2181"
+      restart: unless-stopped
+      networks:
+        - test_net_1  
+    
+  kafka:
+      image: wurstmeister/kafka
+      #container_name: robi_kafka
+      ports:
+        - "9092:9092"
+      networks:
+      - test_net_1
+    
+      environment:
+        KAFKA_ADVERTISED_HOST_NAME: kafka
+        KAFKA_ADVERTISED_PORT: 9092
+        KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+        KAFKA_AUTO_CREATE_TOPICS_ENABLE: 'true'
+        KAFKA_CREATE_TOPICS: "test_topic:1:1"
+        KAFKA_LOG_RETENTION_HOURS: 1
+        KAFKA_LOG_RETENTION_BYTES: 4073741824
+        KAFKA_LOG_SEGMENT_BYTES: 1073741824
+        KAFKA_RETENTION_CHECK_INTERVAL_MS: 300000
+      volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      restart: unless-stopped
+
+
+networks:
+  test_net_1:
+    name: test_net_1
+    driver: bridge
