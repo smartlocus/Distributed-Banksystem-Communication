@@ -112,8 +112,9 @@ that the two phase commit algorithm was used within the publish subscribe commun
 ## How to Run
 
 1. Clone the repository to your local machine:
-
+```
 git clone https://github.com/smartlocus/Distributed-Banksystem-Communication.git
+```
 
 
 2. Navigate to the project directory:
