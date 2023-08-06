@@ -13,6 +13,17 @@ This Project uses four communication types and these are UDP, TCP(also a running
 ### Remote Procedure Call(RPC)
 ![Screenshot from 2023-07-11 01-29-16](https://github.com/smartlocus/Distributed-Banksystem-Communication/assets/114703928/d3ea10c1-95c4-42d3-8e24-89e12147b25c)
 
+### Messsage Oriented Middleware(MOM) 
+In implementing the publish subscribe communication , Kafka is used as a solution.Also note
+that the two phase commit algorithm was used within the publish subscribe communication in order to ensure Atomicity, Data Consistency, Isolation and Durablility.
+
+![Screenshot from 2023-07-10 23-44-50](https://github.com/smartlocus/Distributed-Banksystem-Communication/assets/114703928/7db2e7b7-1262-4639-aaec-a5dcef703016)
+![Screenshot from 2023-07-10 23-48-00](https://github.com/smartlocus/Distributed-Banksystem-Communication/assets/114703928/cb3eb1c3-3953-446e-861f-d30b50b20e05)
+
+![Screenshot from 2023-07-10 23-49-06](https://github.com/smartlocus/Distributed-Banksystem-Communication/assets/114703928/5030fa86-f947-4b9f-af26-8afed8df3cd7)
+
+
+
 
 ## Requirements
 
