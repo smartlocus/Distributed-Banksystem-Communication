@@ -124,12 +124,14 @@ git clone https://github.com/smartlocus/Distributed-Banksystem-Communication.git
 
  
 3. Build the Docker images for the services:
-
-   ## docker-compose build
+ ```
+ docker-compose build
+ ```
 
 4. Run the services:
-
-   ## docker-compose up
+ ```
+ docker-compose up
+```
 
 
 
