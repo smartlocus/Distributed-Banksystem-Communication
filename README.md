@@ -1,6 +1,9 @@
 # Distributed Banking System Communication
 
 This project demonstrates a distributed banking system that communicates using Docker containers and utilizes Apache Kafka for message passing. The system consists of multiple services, including banks, a stock market, Zookeeper, and Kafka.
+This Project uses four communication types and these are UDP, TCP(also a running http server on top of TCP), RPC, MOM(message oriented middleware).
+
+### UDP
 
 ## Requirements
 
