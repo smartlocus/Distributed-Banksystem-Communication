@@ -1,3 +1,5 @@
+<div style="background-color: #f0f0f0; padding: 20px;">
+
 # Distributed Banking System Communication
 
 This project demonstrates a distributed banking system that communicates using Docker containers and utilizes Apache Kafka for message passing. The system consists of multiple services, including banks, a stock market, Zookeeper, and Kafka.
@@ -90,6 +92,7 @@ The services are connected to a custom Docker bridge network named "test_net_1".
 
 Feel free to modify and extend this project as needed. Happy coding!
 
-   
+</div>
+
 
 
