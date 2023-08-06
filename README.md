@@ -19,29 +19,46 @@ In the TCP HTTP implementation, a bank can receive money and go bankrupt through
 To make a GET request to the bank service:
 
 ```
-curl http://localhost:6789 
+curl http://localhost:6789
+
 ```
 To make a POST request to deposit money (e.g., 1000) into the bank:
 
+```
 curl -X POST -d "deposit=1000" http://localhost:6789
+
+```
 
 To update the portfolio value of the bank (e.g., to 3000):
 
+```
 curl -X POST -d "portfolio_value=3000" http://localhost:6789
+
+```
 
 (Note: The portfolio_value represents the total value of the bank.)
 
 To make a POST request to withdraw money (e.g., 500) from the bank:
 
+```
+
 curl -X POST -d "withdrawal=500" http://localhost:6789
+
+```
 
 To make a GET request with response headers included:
 
+```
 curl -X GET -i http://localhost:6789
+
+```
 
 To make a POST request to deposit a specific amount (e.g., 200) with response headers included:
 
+```
 curl -X POST -d "deposit=200" -i http://localhost:6789
+
+```
 
 
 ## RPC Implementation
