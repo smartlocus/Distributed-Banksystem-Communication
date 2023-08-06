@@ -1,0 +1,41 @@
+FROM python:3
+
+WORKDIR /Server
+
+COPY ./Server ./Server
+
+COPY ./networking ./Server/networking
+
+COPY stockportfolio.thrift ./Server/
+
+RUN apt-get update && apt-get install -y iputils-ping
+
+
+
+# Install Conda
+RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh && \
+    bash Miniconda3-latest-Linux-x86_64.sh -b -p /opt/conda && \
+    rm Miniconda3-latest-Linux-x86_64.sh && \
+    export PATH="/opt/conda/bin:$PATH" && \
+    echo "export PATH=/opt/conda/bin:$PATH" >> ~/.bashrc
+
+# Activate Conda environment
+ENV PATH="/opt/conda/bin:$PATH"
+
+RUN conda install -c conda-forge thriftpy2
+
+RUN pip install rpyc
+
+RUN pip install kafka-python
+
+#RUN pip install aiokafka==0.8.0
+RUN pip install aiokafka
+#RUN pip install aiomonitor
+
+
+#ENTRYPOINT [ "python", "-u", "Server/Server.py" ]
+ENTRYPOINT ["python", "-X", "dev", "-u", "Server/Server.py"]
+
+#CMD ["tail", "-f", "/dev/null"]
+EXPOSE 6789/UDP
+

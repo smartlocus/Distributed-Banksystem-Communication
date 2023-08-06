@@ -1,0 +1,118 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-dashboard-configmap-install
+  labels:
+    grafana_datasource: "true"
+data:
+  dashboard.json: |
+    {
+      "__inputs": [],
+      "plugins": [
+        "grafana-polystat-panel",
+        "isaozler-paretochart-panel"
+      ]
+    }
+
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-datasource-configmap
+data:
+  datasource.yaml: |
+    apiVersion: 1
+    datasources:
+    - name: MySQL
+      type: mysql
+      url: sl-mysql:3306
+      database: "prod_db"
+      user: "root"
+      secureJsonData:
+         password: "rootpassword"
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-dashboard-configmap
+  labels:
+    grafana_datasource: "true"
+data:
+  dashboard.json: |
+    {
+      "__inputs": [
+        {
+          "name": "DS_PRISM_- LOCAL",
+          "label": "Prism - Local",
+          "description": "",
+          "type": "datasource",
+          "pluginId": "mysql",
+          "pluginName": "MySQL"
+        }
+      ],
+      "__elements": {},
+      "__requires": [
+        {
+          "type": "grafana",
+          "id": "grafana",
+          "name": "Grafana",
+          "version": "9.0.3"
+        },
+        {
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grafana-dashboard
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: grafana-dashboard
+  template:
+    metadata:
+      labels:
+        app: grafana-dashboard
+    spec:
+      containers:
+        - name: grafana
+          image: grafana/grafana:latest
+          volumeMounts:
+            - name: config-volume-install
+              mountPath: /etc/grafana/plugins
+            - name: config-volume-datasource
+              mountPath: /etc/grafana/provisioning/datasources
+            - name: config-volume-dashboard
+              #mountPath: /etc/grafana/provisioning/dashboards/my-dashoard.json
+              mountpath: /usr/share/grafana/public/dashboards
+              subPath: dashboard.json
+          ports:
+            - containerPort: 3000
+      volumes:
+        - name: config-volume-install
+          configMap:
+            name: my-dashboard-configmap-install
+        - name: config-volume-datasource
+          configMap:
+            name: my-datasource-configmap
+        - name: config-volume-dashboard
+          configMap:
+            name: my-dashboard-configmap
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: grafana-service
+  labels:
+    app: grafana-dashboard
+spec:
+  selector:
+    app: grafana-dashboard
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
+  type: ClusterIP
+

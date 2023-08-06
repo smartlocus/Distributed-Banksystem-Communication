@@ -1,0 +1,54 @@
+
+
+Die Zeit Berechnung erfolgte durch die folgende Funktion
+print(
+                        "Consumed: Topic={}, Partition={}, Offset={}, Key={}, Value={}, Timestamp={}".format(
+                            message.topic,
+                            message.partition,
+                            message.offset,
+                            message.key,
+                            message.value,
+                            message.timestamp,
+                        )
+                    )
+                
+                producertimestamp=message.timestamp
+                consumer_timestamp= time.time()
+                time_taken= consumer_timestamp-(producertimestamp/1000)
+                print("Time takne from publish to consume on vote topic is: ", time_taken*1000,"milliseconds")
+
+-> Wenn ein KafkaProducer in einem Topic eine Nachricht schreibt, fügt er automatisch zusätzlich 
+zu den restlichen  Parametern  automatisch auch ein Timestamp. Die Timestamp ist die Zeit,
+wann eine Nachricht geschrieben wurde. Ich habe wie in der oberen Function dargestellt die Gesamtdauerzeit
+berechnet indem ich ich die Producer Timestamp aus der  aktuelle Zeit (Consumption Zeit) 
+subtrahiert habe.
+
+-> Um das 2PC Prozess zu starten , führen sie in einem zweiten Shell curl -X POST -d "withdrawal=2000" http://localhost:6789
+ aus.
+
+                       total_value_topic                  vote_topic                                  prepare_topic 
+
+
+       Bank1            34.27243232727051ms               49.20387268066406ms                        10.316610336303711ms 
+
+       Bank2            34.828901290893555ms              26.328563690185547ms                        7.373809814453125ms
+
+       Bank4            34.575462341308594ms              26.318788528442383ms                        6.8721771240234375ms
+
+
+       Bank1            11.435270309448242ms               5.318403244018555ms                        6.936311721801758ms
+
+       Bank2            11.232376098632812ms               4.703283309936523ms                        4.489421844482422ms
+
+       Bank4            12.248516082763672ms               3.835916519165039ms                        4.489421844482422ms
+
+
+
+
+-> Von  der Zeit kann man erkennen , dass es im ersten Durchgang deutlich länger gedauert hat als im 
+zweiten Ducrhgang. Das liegt daran ,weil es im ersten Durchgang die initiale Verbindung hergestellt
+werden muss und auch durch Kafka ein Rebalancing erfolgt.Andere Gründe wie Netzweklatenz können auch eine Rolle spielen.
+Um die genaue Ursache weshalb es im ersten Ducrhganag länger gedauert hat herauszufinden, 
+kann man ein Logging and Monitoring system wie Prometheus und Grafana benutzen um die Metriken
+zu sammeln und das Verhalten zu überwachen.
+
