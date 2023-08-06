@@ -1,6 +1,5 @@
 <div style="background-color: #f0f0f0; padding: 20px;">
 
-# Distributed Banking System Communication
 
 # Distributed Banking System Communication
 
