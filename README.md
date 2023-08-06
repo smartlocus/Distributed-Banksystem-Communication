@@ -77,7 +77,11 @@ In the Message Oriented Middleware communication, a bank can only get saved thro
 
 The aim of this project is to simulate distributed communication, where one bank can get saved from other banks in case it goes bankrupt through HTTP, RPC, and MOM.
 
+To trigger the two phase commit execute the following command:
 
+```
+ curl -X POST -d "withdrawal=2000" http://localhost:6789
+```
 
 ### UDP
 ![udp](https://github.com/smartlocus/Distributed-Banksystem-Communication/assets/114703928/f6436999-0f1c-4c5c-9c9e-c2846f1f9f41)
