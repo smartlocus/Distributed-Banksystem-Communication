@@ -15,10 +15,10 @@ The UDP implementation involves banks receiving stocks from the stock market and
 
 In the TCP HTTP implementation, a bank can receive money and go bankrupt through deduction from outside the cluster using curl.
 
-(```)
+
 To make a GET request to the bank service:
-(```)
-curl http://localhost:6789
+
+(```) curl http://localhost:6789 (```)
 
 To make a POST request to deposit money (e.g., 1000) into the bank:
 
