@@ -6,6 +6,10 @@ This Project uses four communication types and these are UDP, TCP(also a running
 ### UDP
 ![udp](https://github.com/smartlocus/Distributed-Banksystem-Communication/assets/114703928/f6436999-0f1c-4c5c-9c9e-c2846f1f9f41)
 
+### TCP with a HTTP SERVER above it
+![Screenshot from 2023-05-13 21-21-09](https://github.com/smartlocus/Distributed-Banksystem-Communication/assets/114703928/99952da4-c003-4cd2-93e7-13121dd119b7)
+![Screenshot from 2023-05-13 20-36-27](https://github.com/smartlocus/Distributed-Banksystem-Communication/assets/114703928/ddea11b0-6a9d-4ee9-b75a-3db10b2873dc)
+
 
 ## Requirements
 
