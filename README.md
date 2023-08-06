@@ -140,6 +140,7 @@ Note: if  the docker compose build(building the images) fails, you probably need
 
 
 This command will start the banks, stock market, Zookeeper, and Kafka containers. The system will now be up and running, and you can access it through the specified ports.
+It might take some time starting all  the containers and communication models depending on your system and network speed.
 
 ## Services and Ports
 
