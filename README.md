@@ -18,7 +18,8 @@ In the TCP HTTP implementation, a bank can receive money and go bankrupt through
 
 To make a GET request to the bank service:
 
-```curl http://localhost:6789 
+```
+curl http://localhost:6789 
 ```
 To make a POST request to deposit money (e.g., 1000) into the bank:
 
