@@ -25,7 +25,7 @@ cd Distributed-Banksystem-Communication
 
 4. Run the services:
 
-   docker-compose up
+   ##docker-compose up
 
 
 
