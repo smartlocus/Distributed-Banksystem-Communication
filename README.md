@@ -169,6 +169,10 @@ The following environment variables are available to configure the services:
 
 The services are connected to a custom Docker bridge network named "test_net_1". This network allows the containers to communicate with each other.
 
+## Persistence
+No persistent docker volume is created in this project. If you want want to have persistence of data you can add the follwoing command to  persist the data.
+
+
 ## Note
 
 - Make sure that the required ports (e.g., 6789, 7001, 2181, 9092) are not already in use on your system.
