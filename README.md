@@ -65,6 +65,12 @@ curl -X POST -d "deposit=200" -i http://localhost:6789
 
 The RPC implementation allows a bank to lend money from another bank (each bank is a running container) through remote procedure call.
 
+To trigger the RPC call execute the follwoing command:
+```
+curl -X POST -d "withdrawal=3000" http://localhost:6789
+
+```
+
 ## Message Oriented Middleware (MOM) Communication
 
 In the Message Oriented Middleware communication, a bank can only get saved through a group of banks that use a two-phase commit and decide to save the bank if they have enough money.
