@@ -63,9 +63,7 @@ The services are connected to a custom Docker bridge network named "test_net_1".
 
 - Make sure that the required ports (e.g., 6789, 7001, 2181, 9092) are not already in use on your system.
 
-## License
 
-This project is licensed under the [MIT License](LICENSE).
 
 Feel free to modify and extend this project as needed. Happy coding!
 
