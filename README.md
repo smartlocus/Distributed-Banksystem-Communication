@@ -4,6 +4,13 @@
 
 This project demonstrates a distributed banking system that communicates using Docker containers and utilizes Apache Kafka for message passing. The system consists of multiple services, including banks, a stock market, Zookeeper, and Kafka.
 This Project uses four communication types and these are UDP, TCP(also a running http server on top of TCP), RPC, MOM(message oriented middleware).
+The aim of this project is to simulate a distributed communication in which one Bank can get saved from other banks in case it goes bankrupt through HTTP,RPC and MOM.
+In the UDP implementation a bank recieves stocks from the stockmarket and updates its total money depending on the recieved values of the stock market.
+In the TCP Http implementation a bank can recieve money, go bankrupt through deduction from ouside the cluster through curl.
+In the RPC implementation a bank can lend money money from another bank(Each bank is a running container) through remote procedure call.
+In the Message oriented middleware communication  a bank can get can only get saved through a bunch of banks that use a two phase commit and decide to save the bank if 
+they have enough money.
+
 
 ### UDP
 ![udp](https://github.com/smartlocus/Distributed-Banksystem-Communication/assets/114703928/f6436999-0f1c-4c5c-9c9e-c2846f1f9f41)
