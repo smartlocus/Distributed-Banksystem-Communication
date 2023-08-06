@@ -123,11 +123,13 @@ git clone https://github.com/smartlocus/Distributed-Banksystem-Communication.git
  cd Distributed-Banksystem-Communication
 ```
 
+
  
 3. Build the Docker images for the services:
  ```
  docker-compose build
  ```
+Note: if  the docker compose build(building the images) fails, you probably need to chnage the "context" in the docker-compose.yaml file to the path where you cloned the repo. you can find the path where you cloned it through the ``` pwd ``` command.  Copy that path and put replace the existing  context value in the docker-compose.yaml
 
 4. Run the services:
  ```
