@@ -16,7 +16,7 @@ git clone https://github.com/smartlocus/Distributed-Banksystem-Communication.git
 2. Navigate to the project directory:
 
    
-## cd Distributed-Banksystem-Communication
+# cd Distributed-Banksystem-Communication
 
  
 3. Build the Docker images for the services:
