@@ -10,6 +10,9 @@ This Project uses four communication types and these are UDP, TCP(also a running
 ![Screenshot from 2023-05-13 21-21-09](https://github.com/smartlocus/Distributed-Banksystem-Communication/assets/114703928/99952da4-c003-4cd2-93e7-13121dd119b7)
 ![Screenshot from 2023-05-13 20-36-27](https://github.com/smartlocus/Distributed-Banksystem-Communication/assets/114703928/ddea11b0-6a9d-4ee9-b75a-3db10b2873dc)
 
+### Remote Procedure Call(RPC)
+![Screenshot from 2023-07-11 01-29-16](https://github.com/smartlocus/Distributed-Banksystem-Communication/assets/114703928/d3ea10c1-95c4-42d3-8e24-89e12147b25c)
+
 
 ## Requirements
 
