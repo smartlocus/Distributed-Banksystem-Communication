@@ -170,7 +170,17 @@ The following environment variables are available to configure the services:
 The services are connected to a custom Docker bridge network named "test_net_1". This network allows the containers to communicate with each other.
 
 ## Persistence
-No persistent docker volume is created in this project. If you want want to have persistence of data you can add the follwoing command to  persist the data.
+No persistent docker volume is created in this project. If you want want to have persistence of data you can add the following command to each Bank(Container) to  persist the data.
+```
+Bank:
+ # ... 
+volumes:
+      - bank_data:/app/data
+ # ....
+
+volumes:
+  bank_data:
+```
 
 
 ## Note
