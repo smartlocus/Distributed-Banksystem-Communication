@@ -175,11 +175,12 @@ No persistent docker volume is created in this project. If you want want to have
 Bank:
  # ... 
 volumes:
-      - bank_data:/app/data
+      - bank_data:/app/data # add this to each Bank 
  # ....
+```
 
 volumes:
-  bank_data:
+  bank_data:  # paste this only once at the end of the docker compose file
 ```
 
 
