@@ -179,6 +179,8 @@ volumes:
  # ....
 ```
 
+
+```
 volumes:
   bank_data:  # paste this only once at the end of the docker compose file
 ```
