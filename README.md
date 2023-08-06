@@ -4,6 +4,8 @@ This project demonstrates a distributed banking system that communicates using D
 This Project uses four communication types and these are UDP, TCP(also a running http server on top of TCP), RPC, MOM(message oriented middleware).
 
 ### UDP
+![udp](https://github.com/smartlocus/Distributed-Banksystem-Communication/assets/114703928/f6436999-0f1c-4c5c-9c9e-c2846f1f9f41)
+
 
 ## Requirements
 
